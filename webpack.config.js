@@ -24,41 +24,26 @@ module.exports = {
             presets: ['@babel/preset-env']
           }
         }
-      }
+      },
+      {
+        test: /\.wasm$/,
+        type: 'webassembly/async', // Tells Webpack to treat it as an async WebAssembly module
+      }
     ]
      
   },
+
+  experiments: {
+    asyncWebAssembly: true,
+  },
+
   plugins: [
+    
     new HtmlWebpackPlugin({
       template: './src/index.html',  // Point to the new index.html location
       filename: 'index.html',  // Output filename in dist
-    }),
+    })    
     
-    // Copy Cesium Assets, Widgets, and Workers to a static directory
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: path.join(cesiumSource, "Workers"),
-          to: `${cesiumBaseUrl}/Workers`,
-        },
-        {
-          from: path.join(cesiumSource, "ThirdParty"),
-          to: `${cesiumBaseUrl}/ThirdParty`,
-        },
-        {
-          from: path.join(cesiumSource, "Assets"),
-          to: `${cesiumBaseUrl}/Assets`,
-        },
-        {
-          from: path.join(cesiumSource, "Widgets"),
-          to: `${cesiumBaseUrl}/Widgets`,
-        },
-      ],
-    }),
-    new webpack.DefinePlugin({
-      // Define relative base path in cesium for loading assets
-      CESIUM_BASE_URL: JSON.stringify(cesiumBaseUrl),
-    }),
   ],
   
   devServer: {

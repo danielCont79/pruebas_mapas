@@ -22,10 +22,7 @@
     "webpack-dev-server": "^5.0.4"
   },
   "dependencies": {
-    "lodash": "^4.17.21",
-    "vizor_collections": "^1.1.2",
-    "vizor_gui_tools": "^1.2.1",
-    "vizor_mvc": "^1.0.2",
-    "vizor_view_components": "^1.0.10"
+    "vizor_geo_three": "^0.1.22",
+    "vizor_gui_tools": "^1.4.8"
   }
 }
